@@ -19,10 +19,36 @@
         <section class="orderList">
           <div class="wrapper">
             <h2>Order</h2>
-            <div class="cashierInfo">
-              <h3>Date</h3>
-              <h3>Time</h3>
-              <h3>Cashier</h3>
+            <div class="infoHeader">
+              <div class="dateInfo">
+                <h3>Date</h3>
+                <p>July 12, 2022</p>
+              </div>
+              <div class="cashierInfo">
+                <h3>Cashier</h3>
+                <p>Shannon</p>
+              </div>
+            </div>
+            <div class="orderInfo">
+              <ul>
+                <li>Name</li>
+                <li>Quantity</li>
+                <li>Unit Price</li>
+              </ul>
+            </div>
+            <div class="orderSummaryInfo">
+              <div class="subtotal">
+                <h3>Subtotal</h3>
+                <p>Subtotal (0 items): 10</p>
+              </div>
+              <div class="discount">
+                <h3>Discount</h3>
+                <p>Discount (%): 10</p>
+              </div>
+              <div class="grandTotal">
+                <h3>Grand Total</h3>
+                <p>Grand Total (0 items): 10</p>
+              </div>
             </div>
           </div>
         </section>
@@ -30,16 +56,18 @@
           <div class="wrapper">
             <h2>Menu</h2>
             <div class="productInfo">
-              <div class="sandwichList">
-                <h3>Sandwiches</h3>
+              <div class="sandwichList menu">
+                <!-- sandwich render menu item here -->
               </div>
-              <div class="drinksList">
-                <h3>Drinks</h3>
+              <div class="drinksList menu">
+                <!-- drinks render menu item here -->
               </div>
-              <div class="sidesList">
-                <h3>Sides</h3>
+              <div class="sidesList menu">
+                <!-- sides render menu item here -->
               </div>
             </div>
+            <button class="discountButton">Discount</button>
+            <button class="clearCartButton">Clear Cart</button>
           </div>
         </section>
       </main>
