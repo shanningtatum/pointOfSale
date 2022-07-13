@@ -1,5 +1,47 @@
+html{
+    font-family:$bodyFont;
+}
+
+h1,h2{
+    font-weight:bold;
+    text-align:center;
+}
+
+h3{
+    margin:0;
+}
+
+p{
+    margin:0;
+}
+
+.menuItemButton{
+    font-family:$bodyFont;
+    background-color:$white;
+    // font-weight:bold;
+    border:none;
+    border-radius:20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    transition:background-color 0.1s;
+    padding:10px;
+
+    &:hover{
+        background-color:peachpuff;
+    }
+
+    p{
+        &:nth-child(3){
+            color:$red;
+            font-weight:bold;
+        }
+    }
+}
+
+
+
+
 .wrapper{
-    max-width:1280px;
-    width:60%;
+    max-width:1440px;
+    width:90%;
     margin:0 auto;
 }

@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/styles/styles.css" />
     <title>Point of Sale</title>
   </head>
@@ -17,6 +23,32 @@
       </header>
       <main>
         <div class="wrapper">
+          <section class="categoryList">
+            <button>Dashboard</button>
+            <button>Burgers</button>
+            <button>Sides</button>
+            <button>Drinks</button>
+          </section>
+          <section class="menuList">
+            <h2>Menu</h2>
+            <div class="productInfo">
+              <div class="sandwichList menu">
+                <ul>
+                  <!-- sandwich render menu item here -->
+                </ul>
+              </div>
+              <div class="drinksList menu">
+                <ul>
+                  <!-- drinks render menu item here -->
+                </ul>
+              </div>
+              <div class="sidesList menu">
+                <ul>
+                  <!-- sides render menu item here -->
+                </ul>
+              </div>
+            </div>
+          </section>
           <section class="orderList">
             <h2>Order</h2>
             <div class="infoHeader">
@@ -48,20 +80,6 @@
               <div class="grandTotal">
                 <h3>Grand Total</h3>
                 <p>Grand Total (0 items): 10</p>
-              </div>
-            </div>
-          </section>
-          <section class="menuList">
-            <h2>Menu</h2>
-            <div class="productInfo">
-              <div class="sandwichList menu">
-                <!-- sandwich render menu item here -->
-              </div>
-              <div class="drinksList menu">
-                <!-- drinks render menu item here -->
-              </div>
-              <div class="sidesList menu">
-                <!-- sides render menu item here -->
               </div>
             </div>
             <button class="discountButton">Discount</button>

@@ -1,25 +1,69 @@
 .container{
     border:2px red solid;
+    margin:auto;
 }
 
 main{
     .wrapper{
         display:flex;
+    }
 
-        .orderList{
-            border:2px orange solid;
-        }
-        .menuList{
-            border:2px blue solid;
-        }
+    .menuList{
+        border: 2px red solid;
+    }
+
+    .orderList{
+        border: 2px green solid;
     }
 
 }
 
+.menu ul{
+    padding:0;
+    display:flex;
+    list-style:none;
+
+    li{
+        margin:10px;
+        width:150px;
+    }
+
+    p{
+        white-space:nowrap;
+    }
+}
+
+.categoryList{
+    display:flex;
+    flex-direction:column;
+    flex-basis:20%;
+    border:2px green solid;
+    background-color:$white;
+
+    button{
+        border:none;
+        font-family:$bodyFont;
+        padding:20px;
+        background-color:$white;
+
+        &:hover, &:focus{
+            background-color:peachpuff;
+        }
+    }
+}
+
 .orderList, .menuList{
-    flex-basis:50%;
+    flex-basis:40%;
     margin:0;
     padding:0;
+
+    img{
+        width:100%;
+    }
+
+    .productInfo{
+        border:2px red solid;
+    }
 }
 
 
