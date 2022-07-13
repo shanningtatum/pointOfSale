@@ -224,3 +224,37 @@ template {
 h1 {
   color: red;
 }
+
+.wrapper {
+  max-width: 1280px;
+  width: 60%;
+  margin: 0 auto;
+}
+
+header .wrapper {
+  background-color: blanchedalmond;
+  padding: 20px;
+}
+
+.container {
+  border: 2px red solid;
+}
+
+main .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+main .wrapper .orderList {
+  border: 2px orange solid;
+}
+main .wrapper .menuList {
+  border: 2px blue solid;
+}
+
+.orderList, .menuList {
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+  margin: 0;
+  padding: 0;
+}

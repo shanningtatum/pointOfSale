@@ -1,0 +1,25 @@
+.container{
+    border:2px red solid;
+}
+
+main{
+    .wrapper{
+        display:flex;
+
+        .orderList{
+            border:2px orange solid;
+        }
+        .menuList{
+            border:2px blue solid;
+        }
+    }
+
+}
+
+.orderList, .menuList{
+    flex-basis:50%;
+    margin:0;
+    padding:0;
+}
+
+
