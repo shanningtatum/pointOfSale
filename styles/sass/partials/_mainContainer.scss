@@ -1,22 +1,24 @@
 .container{
-    border:2px red solid;
     margin:auto;
 }
 
 main{
     .wrapper{
         display:flex;
-    }
-
-    .menuList{
-        border: 2px red solid;
-    }
-
-    .orderList{
-        border: 2px green solid;
+        background-color:$white;
     }
 
 }
+
+.menu{
+    width:100%;
+    display:none;
+}
+
+.menu.active{
+    display:block;
+}
+
 
 .menu ul{
     padding:0;
@@ -25,7 +27,7 @@ main{
 
     li{
         margin:10px;
-        width:150px;
+        // width:150px;
     }
 
     p{
@@ -37,8 +39,8 @@ main{
     display:flex;
     flex-direction:column;
     flex-basis:20%;
-    border:2px green solid;
     background-color:$white;
+    border-right:1px rgba($color:black, $alpha:0.2) solid;
 
     button{
         border:none;
@@ -54,16 +56,27 @@ main{
 
 .orderList, .menuList{
     flex-basis:40%;
-    margin:0;
-    padding:0;
+    // margin:0;
+    // padding:0 40px;
 
     img{
         width:100%;
     }
 
     .productInfo{
-        border:2px red solid;
+        width:100%;
     }
 }
+
+.orderList{
+    border:2px black dotted;
+}
+.menuList{
+    background-color:$white;
+    flex-basis:50%;
+    margin:0 20px;
+}
+
+
 
 

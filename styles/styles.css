@@ -269,7 +269,6 @@ header .wrapper {
 }
 
 .container {
-  border: 2px red solid;
   margin: auto;
 }
 
@@ -277,12 +276,16 @@ main .wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  background-color: #F6F2F2;
 }
-main .menuList {
-  border: 2px red solid;
+
+.menu {
+  width: 100%;
+  display: none;
 }
-main .orderList {
-  border: 2px green solid;
+
+.menu.active {
+  display: block;
 }
 
 .menu ul {
@@ -294,7 +297,6 @@ main .orderList {
 }
 .menu ul li {
   margin: 10px;
-  width: 150px;
 }
 .menu ul p {
   white-space: nowrap;
@@ -310,8 +312,8 @@ main .orderList {
           flex-direction: column;
   -ms-flex-preferred-size: 20%;
       flex-basis: 20%;
-  border: 2px green solid;
   background-color: #F6F2F2;
+  border-right: 1px rgba(0, 0, 0, 0.2) solid;
 }
 .categoryList button {
   border: none;
@@ -326,12 +328,21 @@ main .orderList {
 .orderList, .menuList {
   -ms-flex-preferred-size: 40%;
       flex-basis: 40%;
-  margin: 0;
-  padding: 0;
 }
 .orderList img, .menuList img {
   width: 100%;
 }
 .orderList .productInfo, .menuList .productInfo {
-  border: 2px red solid;
+  width: 100%;
+}
+
+.orderList {
+  border: 2px black dotted;
+}
+
+.menuList {
+  background-color: #F6F2F2;
+  -ms-flex-preferred-size: 50%;
+      flex-basis: 50%;
+  margin: 0 20px;
 }

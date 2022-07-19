@@ -3,8 +3,28 @@ const app = {};
 app.$sandwichList = $(".sandwichList ul");
 app.$drinksList = $(".drinksList ul");
 app.$sidesList = $(".sidesList ul");
+app.$categoryLinks = $(".categoryLinks");
+app.$menu = $(".menu");
 
 // selecting tab to open menu
+app.openMenu = function () {
+  app.$categoryLinks.on("click", function (e) {
+    app.$selectedTab = $(`#${e.target.innerText.toLowerCase()}`);
+
+    // REMOVE all display properties for each menu
+    app.$menu.each(function () {
+      $(this).css("display", "none");
+    });
+
+    // REMOVE all active class
+    app.$categoryLinks.each(function () {
+      $(this).removeClass("active");
+    });
+
+    app.$selectedTab.css("display", "flex");
+    app.$selectedTab.addClass("active");
+  });
+};
 
 // renders product on menu list
 app.renderProducts = () => {
@@ -22,6 +42,15 @@ app.renderProducts = () => {
     app.$sidesList.append(
       `<li><button class="menuItemButton"><img src='${item.image}'><p>${item.name}</p><p>$${item.price}</p></button></li>`
     );
+  });
+};
+
+// setup event listener for menu item buttons
+app.setupEventListener = function () {
+  app.$menuItemButton = $(".menuItemButton");
+
+  app.$menuItemButton.on("click", function () {
+    console.log(this.children[1].textContent);
   });
 };
 
@@ -54,6 +83,8 @@ app.sides = [
 
 app.init = () => {
   app.renderProducts();
+  app.openMenu();
+  app.setupEventListener();
 };
 
 $(() => {
