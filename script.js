@@ -72,12 +72,10 @@ app.checkOrder = (id) => {
 
   if (cart.some((item) => item.id == id)) {
     app.changeQty("plus", id);
-    console.log("item exists!");
   } else {
     const item = app.products.find((product) => product.id == id);
 
-    console.log(item);
-    console.log("this the item");
+    console.log("adding new item");
 
     cart.push({
       ...item,
@@ -89,13 +87,18 @@ app.checkOrder = (id) => {
 
 // update quantity for order
 app.changeQty = (action, id) => {
+  console.log("we inchange");
   cart = cart.map((item) => {
+    console.log("inside map");
     let numberOfUnits = item.numberOfUnits;
+    console.log(item.numberOfUnits);
 
     if (item.id == id) {
       if (action === "minus" && numberOfUnits > 1) {
+        console.log("decrease number of units");
         numberOfUnits--;
       } else if (action === "plus") {
+        console.log("increase number of units");
         numberOfUnits++;
       }
     }
@@ -130,10 +133,64 @@ app.addToOrder = () => {
         </button>
       </li>
       <li>$ ${item.price} 
-        <i class="fas fa-trash"></i>
+        <button>
+          <i class="fas fa-trash"></i>
+        </button>
       </li>
     </ul>`);
   });
+
+  app.addClickEvents();
+};
+
+// ADD CLICK EVENTS FOR PLUS, MINUS, TRASH BUTTON
+app.addClickEvents = () => {
+  $(".orderItem button").on("click", function (e) {
+    const action = e.target.className;
+
+    const itemName =
+      e.target.parentElement.parentElement.previousElementSibling.innerText;
+
+    if (action == "fa-solid fa-circle-plus") {
+      console.log("lets add");
+      app.findItemIndex(itemName, "plus");
+    } else if (action == "fa-solid fa-circle-minus") {
+      console.log("lets subtract");
+
+      app.findItemIndex(itemName, "minus");
+    } else if (action == "fas fa-trash") {
+      console.log("lets delete");
+      const deleteItemName =
+        e.target.parentElement.parentElement.previousElementSibling
+          .previousElementSibling.innerText;
+      app.findItemIndex(deleteItemName, "delete");
+    }
+  });
+};
+
+// SEARCHES CART ARRAY FOR ITEM ID
+app.findItemIndex = (menuItem, action) => {
+  cart.forEach((item, index) => {
+    if (menuItem == item.name) {
+      itemId = cart[index].id;
+
+      if (action == "delete") {
+        app.removeItem(itemId);
+      } else {
+        console.log("else", action, itemId);
+        app.changeQty(action, itemId);
+      }
+    } else {
+      console.log("not the same");
+    }
+  });
+};
+
+// REMOVE ITEM
+app.removeItem = (id) => {
+  cart = cart.filter((item) => item.id !== id);
+
+  app.updateCart();
 };
 
 app.updateTotals = () => {
