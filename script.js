@@ -1,5 +1,6 @@
 const app = {};
 
+// QUERY CLASSES TO RENDER
 app.$sandwichList = $(".sandwichList ul");
 app.$drinksList = $(".drinksList ul");
 app.$sidesList = $(".sidesList ul");
@@ -13,10 +14,24 @@ app.$subtotalMoney = $(".subtotalMoney");
 app.$discountMoney = $(".discountMoney");
 app.$grandTotalMoney = $(".grandTotalMoney");
 app.$totalItems = $(".totalItems");
+app.$discountPercentage = $(".discountPercentage");
+app.$grandTotalMoney = $(".grandTotalMoney");
+app.$grandTotalMoney.text(
+  app.$subtotalMoney.text() - app.$discountMoney.text()
+);
+
+// QUERY BUTTONS
+app.$discountButton = $(".discountButton");
+app.$clearCartButton = $(".clearCartButton");
+
+// QUERY TO DISPLAY
+app.$discountBox = $(".discountBox");
+
+// INPUT QUERY
+app.$discountAmount = $(".discountAmount");
 
 // STATES
 let cart = [];
-let grandTotal = [];
 
 // selecting tab to open menu
 app.openMenu = function () {
@@ -64,6 +79,45 @@ app.setupEventListener = function () {
   app.$menuItemButton.on("click", function () {
     app.checkOrder(this.id);
   });
+
+  app.$discountButton.on("click", function () {
+    app.discountStyles();
+  });
+
+  app.$clearCartButton.on("click", function () {
+    console.log(this);
+  });
+};
+
+// CHANGE DISCOUNT BOX STYLES
+app.discountStyles = () => {
+  app.$discountBox.css("display", "block");
+  app.$submitButton = $(".submitButton");
+  app.$cancelButton = $(".cancelButton");
+
+  app.$submitButton.on("click", function () {
+    app.applyDiscount();
+  });
+
+  app.$cancelButton.on("click", function () {
+    app.$discountBox.css("display", "none");
+    app.$discountAmount.val("");
+  });
+};
+
+app.applyDiscount = () => {
+  const discountAmount = app.$discountAmount.val();
+
+  if (discountAmount > 100 || discountAmount < 0) {
+  } else {
+    app.$discountPercentage.text(discountAmount);
+    app.$discountMoney.text(app.$subtotalMoney.text() * (discountAmount / 100));
+
+    app.$discountBox.css("display", "none");
+    app.$grandTotalMoney.text(
+      app.$subtotalMoney.text() - app.$discountMoney.text()
+    );
+  }
 };
 
 // adds item to order on receipt list
@@ -75,8 +129,6 @@ app.checkOrder = (id) => {
   } else {
     const item = app.products.find((product) => product.id == id);
 
-    console.log("adding new item");
-
     cart.push({
       ...item,
       numberOfUnits: 1,
@@ -87,18 +139,13 @@ app.checkOrder = (id) => {
 
 // update quantity for order
 app.changeQty = (action, id) => {
-  console.log("we inchange");
   cart = cart.map((item) => {
-    console.log("inside map");
     let numberOfUnits = item.numberOfUnits;
-    console.log(item.numberOfUnits);
 
     if (item.id == id) {
       if (action === "minus" && numberOfUnits > 1) {
-        console.log("decrease number of units");
         numberOfUnits--;
       } else if (action === "plus") {
-        console.log("increase number of units");
         numberOfUnits++;
       }
     }
@@ -115,8 +162,10 @@ app.changeQty = (action, id) => {
 app.updateCart = () => {
   app.addToOrder();
   app.updateTotals();
+  app.applyDiscount();
 };
 
+// ADDS ITEM TO ORDER
 app.addToOrder = () => {
   app.$receiptList.html(""); // Clear Cart Element
   cart.forEach((item) => {
@@ -152,18 +201,17 @@ app.addClickEvents = () => {
       e.target.parentElement.parentElement.previousElementSibling.innerText;
 
     if (action == "fa-solid fa-circle-plus") {
-      console.log("lets add");
       app.findItemIndex(itemName, "plus");
+      app.applyDiscount();
     } else if (action == "fa-solid fa-circle-minus") {
-      console.log("lets subtract");
-
       app.findItemIndex(itemName, "minus");
+      app.applyDiscount();
     } else if (action == "fas fa-trash") {
-      console.log("lets delete");
       const deleteItemName =
         e.target.parentElement.parentElement.previousElementSibling
           .previousElementSibling.innerText;
       app.findItemIndex(deleteItemName, "delete");
+      app.applyDiscount();
     }
   });
 };
@@ -177,11 +225,8 @@ app.findItemIndex = (menuItem, action) => {
       if (action == "delete") {
         app.removeItem(itemId);
       } else {
-        console.log("else", action, itemId);
         app.changeQty(action, itemId);
       }
-    } else {
-      console.log("not the same");
     }
   });
 };

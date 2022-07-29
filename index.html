@@ -29,6 +29,24 @@
       <!-- HEADER END -->
       <main>
         <div class="wrapper">
+          <!-- DISCOUNT WINDOW START -->
+          <section class="discountBox">
+            <h3>Discount</h3>
+            <fieldset>
+              <legend>Enter Discount Amount</legend>
+              <input
+                type="number"
+                class="discountAmount"
+                placeholder="Ex: 10"
+              />
+            </fieldset>
+            <div class="extraButton">
+              <button class="submitButton">Submit</button>
+              <button class="cancelButton">Cancel</button>
+            </div>
+          </section>
+          <!-- DISCOUNT WINDOW END -->
+
           <!-- VERTICAL SIDE BAR START -->
           <section class="categoryList">
             <button class="categoryLinks">Burgers</button>
@@ -36,7 +54,6 @@
             <button class="categoryLinks">Drinks</button>
           </section>
           <!-- VERTICAL SIDE BAR END -->
-
           <!-- MENU ITEMS DISPLAY START -->
           <section class="menuList">
             <h2>Menu</h2>
@@ -93,14 +110,14 @@
               <div class="discount">
                 <h3>Discount</h3>
                 <p>
-                  Discount (<span class="discountPercentage">%</span>):
+                  Discount (<span class="discountPercentage"></span>%): $
                   <span class="discountMoney">0</span>
                 </p>
               </div>
               <div class="grandTotal">
                 <h3>Grand Total</h3>
                 <p>
-                  Grand Total (<span class="totalItems">0</span> items):
+                  Grand Total (<span class="totalItems">0</span> items): $
                   <span class="grandTotalMoney">0</span>
                 </p>
               </div>

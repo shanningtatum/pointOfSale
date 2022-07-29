@@ -1,5 +1,6 @@
 .container{
     margin:auto;
+    position: relative;
 }
 
 main{
@@ -103,8 +104,7 @@ main{
 
         &:nth-child(2){
             display:flex;
-            justify-content:space-between;
-
+            justify-content:space-evenly;
             text-align:center;
         }
         &:last-child{
@@ -128,6 +128,22 @@ main{
     margin:0 20px;
 }
 
+// DISCOUNT BOX
+.discountBox{
+    display: none;
+    text-align: center;
+    position: absolute;
+    background-color:red;
+    width:15%;
+    left:45%;
+    padding:20px 10px;
+    border-radius:20px;
+    z-index:10;
+
+    .extraButton{
+        margin:20px 0 0;
+    }
+}
 
 
 
