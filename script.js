@@ -59,8 +59,7 @@ app.setupEventListener = function () {
   app.$menuItemButton = $(".menuItemButton");
 
   app.$menuItemButton.on("click", function () {
-    totalItems++;
-    if (totalItems < 10) {
+    if (cart.length <= 10) {
       app.checkOrder(this.id);
     } else {
       alert("too many items");
@@ -69,7 +68,7 @@ app.setupEventListener = function () {
 };
 
 // adds item to order on receipt list
-app.checkOrder = function (id) {
+app.checkOrder = (id) => {
   // Check if product already exists in cart
 
   if (cart.some((item) => item.id == id)) {
@@ -79,13 +78,13 @@ app.checkOrder = function (id) {
     const item = app.products.find((product) => product.id == id);
 
     console.log(item);
+    console.log("this the item");
 
     cart.push({
       ...item,
       numberOfUnits: 1,
     });
-
-    console.log(cart);
+    app.updateCart();
   }
   //   app.$orderInfo.append(`<ul class="orderItem">
   //   <li>${item}</li>
@@ -103,26 +102,41 @@ app.checkOrder = function (id) {
 };
 
 // update quantity for order
-app.changeQty = function (action, id) {
+app.changeQty = (action, id) => {
   cart = cart.map((item) => {
     let numberOfUnits = item.numberOfUnits;
 
-    console.log(item);
-
-    if (item.id === id) {
+    if (item.id == id) {
       if (action === "minus" && numberOfUnits > 1) {
         numberOfUnits--;
-        console.log("subtract");
       } else if (action === "plus") {
         numberOfUnits++;
-        console.log("add");
       }
     }
-
+    console.log(item);
+    console.log(cart);
     return {
       ...item,
       numberOfUnits,
     };
+  });
+
+  app.updateCart();
+};
+
+app.updateCart = () => {
+  app.$receiptList.html(""); // Clear Cart Element
+  cart.forEach((item) => {
+    app.$receiptList.append(`
+    <ul class="orderItem">
+      <li>${item.name}</li>
+      <li><i class="fas fa-minus"></i></li>
+      <li>${item.numberOfUnits}</li>
+      <li><i class="fas fa-plus"></i></li>
+      <li>$</li>
+      <li>${item.price}</li>
+      <li><i class="fas fa-trash"></i></li>
+    </ul>`);
   });
 };
 
