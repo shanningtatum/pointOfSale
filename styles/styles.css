@@ -339,6 +339,58 @@ main .wrapper {
 .orderList {
   border: 2px black dotted;
 }
+.orderList .infoHeader {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 2px red solid;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.orderList .orderInfo ul, .orderList .receiptList ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0;
+  list-style: none;
+  border: 2px orange solid;
+}
+.orderList .orderInfo li, .orderList .receiptList li {
+  width: 33.3333333333%;
+}
+.orderList .orderInfo li:nth-child(2), .orderList .receiptList li:nth-child(2) {
+  text-align: center;
+}
+.orderList .orderInfo li:last-child, .orderList .receiptList li:last-child {
+  text-align: right;
+}
+
+.orderItem {
+  margin: 0;
+}
+.orderItem li {
+  width: 33.3333333333%;
+}
+.orderItem li:nth-child(2) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: center;
+}
+.orderItem li:last-child {
+  text-align: right;
+}
+.orderItem button {
+  border: none;
+  background-color: transparent;
+}
 
 .menuList {
   background-color: #F6F2F2;

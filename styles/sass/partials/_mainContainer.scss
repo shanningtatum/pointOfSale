@@ -70,7 +70,57 @@ main{
 
 .orderList{
     border:2px black dotted;
+
+    .infoHeader{
+        display:flex;
+        border:2px red solid;
+        justify-content:space-between;
+    }
+
+    .orderInfo, .receiptList{
+        ul{
+            display:flex;
+            justify-content:space-between;
+            padding:0;
+            list-style:none;
+            border:2px orange solid;
+        }
+
+        li{
+            width:calc(100%/3);
+            &:nth-child(2){
+                text-align:center;
+            }
+            &:last-child{
+                text-align:right;
+            }
+        }
+    }
 }
+
+.orderItem{
+    margin:0;
+
+    li{
+        width:calc(100% / 3);
+
+        &:nth-child(2){
+            display:flex;
+            justify-content:space-between;
+
+            text-align:center;
+        }
+        &:last-child{
+            text-align:right;
+        }
+    }
+    button{
+        border:none;
+        background-color:transparent;
+    }
+}
+
+
 .menuList{
     background-color:$white;
     flex-basis:50%;
