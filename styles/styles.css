@@ -352,21 +352,17 @@ main .wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   padding: 0;
   list-style: none;
   border: 2px orange solid;
 }
 .orderList .orderInfo li, .orderList .receiptList li {
   width: 33.3333333333%;
-}
-.orderList .orderInfo li:nth-child(2), .orderList .receiptList li:nth-child(2) {
+  border: 2px red solid;
   text-align: center;
-}
-.orderList .orderInfo li:last-child, .orderList .receiptList li:last-child {
-  text-align: right;
 }
 
 .orderItem {
@@ -386,6 +382,9 @@ main .wrapper {
 }
 .orderItem li:last-child {
   text-align: right;
+}
+.orderItem li:last-child i {
+  margin-left: 25%;
 }
 .orderItem button {
   border: none;

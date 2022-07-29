@@ -80,7 +80,7 @@ main{
     .orderInfo, .receiptList{
         ul{
             display:flex;
-            justify-content:space-between;
+            justify-content:space-evenly;
             padding:0;
             list-style:none;
             border:2px orange solid;
@@ -88,12 +88,9 @@ main{
 
         li{
             width:calc(100%/3);
-            &:nth-child(2){
-                text-align:center;
-            }
-            &:last-child{
-                text-align:right;
-            }
+            border:2px red solid;
+            text-align: center;
+            
         }
     }
 }
@@ -112,6 +109,10 @@ main{
         }
         &:last-child{
             text-align:right;
+
+            i{
+                margin-left:25%;
+            }
         }
     }
     button{

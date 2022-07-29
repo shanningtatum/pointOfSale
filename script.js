@@ -8,12 +8,15 @@ app.$menu = $(".menu");
 app.$orderInfo = $(".orderInfo");
 app.$receiptList = $(".receiptList");
 
+// SUBTOTAL SPANS
+app.$subtotalMoney = $(".subtotalMoney");
+app.$discountMoney = $(".discountMoney");
+app.$grandTotalMoney = $(".grandTotalMoney");
+app.$totalItems = $(".totalItems");
+
 // STATES
 let cart = [];
 let grandTotal = [];
-
-// sets the max number of Total Items allowed to 0;
-let totalItems = 0;
 
 // selecting tab to open menu
 app.openMenu = function () {
@@ -59,11 +62,7 @@ app.setupEventListener = function () {
   app.$menuItemButton = $(".menuItemButton");
 
   app.$menuItemButton.on("click", function () {
-    if (cart.length <= 10) {
-      app.checkOrder(this.id);
-    } else {
-      alert("too many items");
-    }
+    app.checkOrder(this.id);
   });
 };
 
@@ -86,19 +85,6 @@ app.checkOrder = (id) => {
     });
     app.updateCart();
   }
-  //   app.$orderInfo.append(`<ul class="orderItem">
-  //   <li>${item}</li>
-  //   <li>
-  //     <button>
-  //       <i class="fa-solid fa-circle-minus"></i>
-  //     </button>
-  //     2
-  //     <button>
-  //       <i class="fa-solid fa-circle-plus"></i>
-  //     </button>
-  //   </li>
-  //   <li>${price}</li>
-  // </ul>`);
 };
 
 // update quantity for order
@@ -113,8 +99,7 @@ app.changeQty = (action, id) => {
         numberOfUnits++;
       }
     }
-    console.log(item);
-    console.log(cart);
+
     return {
       ...item,
       numberOfUnits,
@@ -125,22 +110,51 @@ app.changeQty = (action, id) => {
 };
 
 app.updateCart = () => {
+  app.addToOrder();
+  app.updateTotals();
+};
+
+app.addToOrder = () => {
   app.$receiptList.html(""); // Clear Cart Element
   cart.forEach((item) => {
     app.$receiptList.append(`
     <ul class="orderItem">
       <li>${item.name}</li>
-      <li><i class="fas fa-minus"></i></li>
-      <li>${item.numberOfUnits}</li>
-      <li><i class="fas fa-plus"></i></li>
-      <li>$</li>
-      <li>${item.price}</li>
-      <li><i class="fas fa-trash"></i></li>
+      <li>
+        <button>
+          <i class="fa-solid fa-circle-minus"></i>
+        </button>
+        ${item.numberOfUnits}
+        <button>
+          <i class="fa-solid fa-circle-plus"></i>
+        </button>
+      </li>
+      <li>$ ${item.price} 
+        <i class="fas fa-trash"></i>
+      </li>
     </ul>`);
   });
 };
 
-app.addToOrder = () => {};
+app.updateTotals = () => {
+  // CALCULATES SUBTOTAL
+  // STORES THE PRICE OF EACH ITEM IN ARRAY
+  const subTotalArray = cart.map((item) => {
+    return item.numberOfUnits * item.price;
+  });
+  // ADDS ALL THE NUMBERS TOGETHER IN THAT ARRAY
+  const subTotal = subTotalArray.reduce((a, b) => a + b, 0);
+  app.$subtotalMoney.text(subTotal);
+
+  // CALCULATES TOTAL ITEMS
+  const totalItemArray = cart.map((item) => {
+    return item.numberOfUnits;
+  });
+
+  const totalItems = totalItemArray.reduce((a, b) => a + b, 0);
+  app.$totalItems.text(totalItems);
+};
+
 // product list
 // sandwiches
 app.sandwiches = [
