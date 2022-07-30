@@ -223,6 +223,12 @@ template {
 
 html {
   font-family: "Poppins", sans-serif;
+  font-size: 125%;
+}
+
+h1 {
+  font-size: 0.8rem;
+  border: 2px red solid;
 }
 
 h1, h2 {
@@ -236,6 +242,7 @@ h3 {
 
 p {
   margin: 0;
+  font-size: 0.8rem;
 }
 
 .menuItemButton {
@@ -263,21 +270,39 @@ p {
   margin: 0 auto;
 }
 
+header {
+  height: 100vh;
+  background-color: #F6F2F2;
+  border-right: 1px rgba(21, 20, 20, 0.2) solid;
+  width: 20%;
+}
 header .wrapper {
-  background-color: blanchedalmond;
   padding: 20px;
+  height: 100%;
+  margin: 0 auto;
 }
 
 .container {
   margin: auto;
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 80%;
 }
 
+main {
+  width: 100%;
+  height: 100vh;
+  background-color: #F6F2F2;
+  border: 2px red solid;
+}
 main .wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background-color: #F6F2F2;
+  width: 100%;
+  height: 100%;
 }
 
 .menu {
@@ -294,6 +319,8 @@ main .wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   list-style: none;
 }
 .menu ul li {
@@ -311,24 +338,27 @@ main .wrapper {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -ms-flex-preferred-size: 20%;
-      flex-basis: 20%;
   background-color: #F6F2F2;
-  border-right: 1px rgba(0, 0, 0, 0.2) solid;
 }
-.categoryList button {
+.categoryList .active {
+  background-color: peachpuff;
+  border-radius: 10px;
+}
+.categoryList .categoryLinks {
   border: none;
   font-family: "Poppins", sans-serif;
-  padding: 20px;
   background-color: #F6F2F2;
+  padding: 10px 20px;
+  margin: 20px 0;
 }
-.categoryList button:hover, .categoryList button:focus {
+.categoryList .categoryLinks:hover, .categoryList .categoryLinks:focus {
+  border-radius: 10px;
   background-color: peachpuff;
 }
 
 .orderList, .menuList {
-  -ms-flex-preferred-size: 40%;
-      flex-basis: 40%;
+  height: 100%;
+  border: 2px blue solid;
 }
 .orderList img, .menuList img {
   width: 100%;
@@ -338,13 +368,14 @@ main .wrapper {
 }
 
 .orderList {
+  position: relative;
+  padding: 0 20px;
   border: 2px black dotted;
 }
 .orderList .infoHeader {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  border: 2px red solid;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -358,11 +389,10 @@ main .wrapper {
           justify-content: space-evenly;
   padding: 0;
   list-style: none;
-  border: 2px orange solid;
 }
 .orderList .orderInfo li, .orderList .receiptList li {
+  margin: 2px 0;
   width: 33.3333333333%;
-  border: 2px red solid;
   text-align: center;
 }
 
@@ -390,26 +420,78 @@ main .wrapper {
 .orderItem button {
   border: none;
   background-color: transparent;
+  -webkit-transition: 0.3s color;
+  transition: 0.3s color;
+}
+.orderItem button:hover {
+  color: #D33F49;
 }
 
 .menuList {
   background-color: #F6F2F2;
-  -ms-flex-preferred-size: 50%;
-      flex-basis: 50%;
-  margin: 0 20px;
+  width: 60%;
+}
+
+.orderSummary {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  margin-left: auto;
+}
+
+.orderSummaryInfo, .extraButton {
+  width: 50%;
+}
+
+.extraButton {
+  border: 2px red solid;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+.extraButton button {
+  margin-left: 10px;
+  background-color: #D33F49;
+  border: none;
+  border-radius: 10px;
+  padding: 0 10px;
+  font-family: "Poppins", sans-serif;
+  color: #F6F2F2;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+.extraButton button:hover {
+  background-color: maroon;
 }
 
 .discountBox {
   display: none;
   text-align: center;
   position: absolute;
-  background-color: red;
-  width: 15%;
-  left: 45%;
-  padding: 20px 10px;
-  border-radius: 20px;
-  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
 }
-.discountBox .extraButton {
+.discountBox .discountBoxContainer {
+  position: absolute;
+  top: 20%;
+  left: 45%;
+  width: 20%;
+  padding: 10px 20px;
+  border-radius: 10px;
+  z-index: 10;
+  background-color: #D33F49;
+}
+.discountBox .discountExtraButton {
   margin: 20px 0 0;
 }

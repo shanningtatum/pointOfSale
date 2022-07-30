@@ -1,7 +1,11 @@
 html{
     font-family:$bodyFont;
+    font-size:125%;
 }
-
+h1{
+    font-size:0.8rem;
+    border:2px red solid;
+}
 h1,h2{
     font-weight:bold;
     text-align:center;
@@ -13,6 +17,7 @@ h3{
 
 p{
     margin:0;
+    font-size:0.8rem;
 }
 
 .menuItemButton{

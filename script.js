@@ -48,6 +48,8 @@ app.openMenu = function () {
       $(this).removeClass("active");
     });
 
+    $(this).addClass("active");
+
     app.$selectedTab.css("display", "flex");
     app.$selectedTab.addClass("active");
   });
@@ -57,17 +59,17 @@ app.openMenu = function () {
 app.renderProducts = () => {
   app.sandwiches.forEach((item) => {
     app.$sandwichList.append(
-      `<li><button class="menuItemButton" id='${item.id}'><img src='${item.image}'><p>${item.name}</p><p>$${item.price}</p></button></li>`
+      `<li><button class="menuItemButton" id='${item.id}'><img src='${item.image}' draggable="false"><p>${item.name}</p><p>$${item.price}</p></button></li>`
     );
   });
   app.drinks.forEach((item) => {
     app.$drinksList.append(
-      `<li><button class="menuItemButton" id='${item.id}'><img src='${item.image}'><p>${item.name}</p><p>$${item.price}</p></button></li>`
+      `<li><button class="menuItemButton" id='${item.id}'><img src='${item.image}' draggable="false"><p>${item.name}</p><p>$${item.price}</p></button></li>`
     );
   });
   app.sides.forEach((item) => {
     app.$sidesList.append(
-      `<li><button class="menuItemButton" id='${item.id}'><img src='${item.image}'><p>${item.name}</p><p>$${item.price}</p></button></li>`
+      `<li><button class="menuItemButton" id='${item.id}'><img src='${item.image}' draggable="false"><p>${item.name}</p><p>$${item.price}</p></button></li>`
     );
   });
 };
@@ -85,7 +87,15 @@ app.setupEventListener = function () {
   });
 
   app.$clearCartButton.on("click", function () {
-    console.log(this);
+    console.log("clicked");
+
+    cart = [];
+    console.log(cart);
+
+    app.$receiptList.text("");
+    console.log(app.$receiptList);
+    app.$subtotalMoney.text("0");
+    app.$discountMoney.text("0");
   });
 };
 
