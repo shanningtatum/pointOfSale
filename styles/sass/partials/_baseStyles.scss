@@ -4,19 +4,27 @@ html{
 }
 h1{
     font-size:0.8rem;
-    border:2px red solid;
 }
 h1,h2{
     font-weight:bold;
     text-align:center;
 }
 
+h2{
+    font-size:1.2rem;
+}
+
 h3{
+    font-size:1rem;
     margin:0;
 }
 
 p{
     margin:0;
+    font-size:0.8rem;
+}
+
+.orderInfo ul, .receiptList ul {
     font-size:0.8rem;
 }
 
@@ -31,7 +39,7 @@ p{
     padding:10px;
 
     &:hover{
-        background-color:peachpuff;
+        background-color:$yellow;
     }
 
     p{

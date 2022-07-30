@@ -95,7 +95,11 @@ app.setupEventListener = function () {
     app.$receiptList.text("");
     console.log(app.$receiptList);
     app.$subtotalMoney.text("0");
+    app.$totalItems.text("0");
     app.$discountMoney.text("0");
+    app.$grandTotalMoney.text(
+      app.$subtotalMoney.text() - app.$discountMoney.text()
+    );
   });
 };
 
